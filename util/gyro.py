@@ -2,13 +2,21 @@ from robot import Robot
 
 def turn_by(angle, speed, acceleration=-1):
     start_angle = Robot.gyro.angle()
-    settings = Robot.chassis.settings()
     if acceleration >= 0:
+        settings = Robot.chassis.settings()
         Robot.chassis.settings(settings[0], settings[1], settings[2], acceleration)
     if angle > 0:
-        pass
+        Robot.chassis.drive(0, speed)
+        while Robot.gyro.angle() < start_angle + angle:
+            pass
+        
     else:
-        pass
+        Robot.chassis.drive(0, -speed)
+        while Robot.gyro.angle() > start_angle + angle:
+            pass
+        
+    Robot.brake()
+    
     
 
 
