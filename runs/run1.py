@@ -2,10 +2,11 @@ from robot import Robot
 from pybricks.parameters import Stop
 from util import gyro
 from util import lines
-from time import sleep
+from pybricks.tools import wait
 
 name = "run1"
 
 def start():
-    while Robot.color_left >
-        Robot.chassis.drive()
+    Robot.reset_gyro()
+    Robot.chassis.reset()
+    

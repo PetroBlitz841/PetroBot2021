@@ -14,7 +14,6 @@ def display_menu():
   for i in range(len(runs)):
     Robot.brick.screen.print(button_symbols[i] + runs[i].name)
 
-
 while True:
   display_menu()
 

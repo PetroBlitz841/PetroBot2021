@@ -22,14 +22,13 @@ def turn_by(angle, speed, acceleration=-1):
 
     Robot.chassis.settings(settings[0], settings[1], settings[2], settings[3])
 
-def gyro_follow(target, speed, distance, kt):
+def gyro_follow(target, speed, distance, kp):
+    error = 0
     Robot.chassis.reset()
     Robot.chassis.drive(speed, 0)
     while Robot.chassis.distance() < distance:
-        if Robot.gyro.angle() > target:
-            Robot.chassis.drive(speed, -kt)
-        elif Robot.gyro.angle() < target:
-            Robot.chassis.drive(speed, kt)
+        error = target - Robot.gyro.angle()
+        Robot.chassis.drive(speed, error * kp)
 
     Robot.brake()
 
