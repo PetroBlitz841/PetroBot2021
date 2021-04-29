@@ -8,10 +8,12 @@ def light_calibration():
     Robot.brick.screen.print("left color on: BLACK")
     buttons.wait_for_any_press()
     BLACK = Robot.color_left.reflection()
+    print(BLACK)
     Robot.brick.screen.clear()
     Robot.brick.screen.print("left color on: WHITE")
     buttons.wait_for_any_press()
     WHITE = Robot.color_left.reflection()
+    print(WHITE)
     Robot.brick.screen.clear()
 
 

@@ -21,6 +21,25 @@ class Robot():
 
   chassis = DriveBase(wheel_left, wheel_right, wheel_diameter=62.4, axle_track=130)
 
+  #calibration
+  BLACK = 5
+  WHITE = 62
+
+  @classmethod
+  def settings(cls, 
+               straight_speed=None, 
+               straight_acceleration=None, 
+               turn_rate=None, 
+               turn_acceleration=None):
+    cls.chassis.stop() #Settings can only be changed while stopped
+    current_settings = cls.chassis.settings()
+    cls.chassis.settings(straight_speed if straight_speed is not None else current_settings[0],
+                     straight_acceleration if straight_acceleration is not None else current_settings[1],
+                     turn_rate if turn_rate is not None else current_settings[2],
+                     turn_acceleration if turn_acceleration is not None else current_settings[3])
+
+
+
   @classmethod
   def brake(cls):
     cls.chassis.stop()
