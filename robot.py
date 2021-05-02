@@ -26,6 +26,10 @@ class Robot():
   WHITE = 62
 
   @classmethod
+  def reset_settings():
+    cls.chassis.settings(115, 460, 88, 352)
+
+  @classmethod
   def settings(cls, 
                straight_speed=None, 
                straight_acceleration=None, 
