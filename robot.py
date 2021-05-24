@@ -22,11 +22,11 @@ class Robot():
   chassis = DriveBase(wheel_left, wheel_right, wheel_diameter=62.4, axle_track=130)
 
   #calibration
-  BLACK = 5
-  WHITE = 62
+  BLACK = 4
+  WHITE = 54
 
   @classmethod
-  def reset_settings():
+  def reset_settings(cls):
     cls.chassis.settings(115, 460, 88, 352)
 
   @classmethod
@@ -49,6 +49,12 @@ class Robot():
     cls.chassis.stop()
     cls.wheel_left.brake()
     cls.wheel_right.brake()
+
+  @classmethod
+  def hold(cls):
+    cls.chassis.stop()
+    cls.wheel_left.hold()
+    cls.wheel_right.hold()
 
   @classmethod
   def reset_gyro(cls):

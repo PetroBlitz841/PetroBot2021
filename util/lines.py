@@ -48,7 +48,7 @@ def line_until(line_side, sensor_side, p0, condition, max_time=0):
     Robot.chassis.drive(p0, 0)
     #start moving forward
     while not condition() and (time.time() - start_time < max_time or max_time <= 0):
-        #as long as you havn't made it to the end
+        #as long as you havn't made it to the condition
         error = vision() - target
         if line_side == "right":
             Robot.chassis.drive(p0, -error * 4)
@@ -57,3 +57,4 @@ def line_until(line_side, sensor_side, p0, condition, max_time=0):
 
     Robot.brake()
     #STOP!
+
