@@ -15,7 +15,7 @@ def light_calibration():
     Robot.brick.screen.clear()
 
 
-def line_follower(line_side, sensor_side, distance, p0):
+def line_follower(line_side, sensor_side, distance, p0, kp=4):
     target = (Robot.WHITE + Robot.BLACK) / 2
 
     vision = Robot.color_right.reflection
@@ -30,9 +30,9 @@ def line_follower(line_side, sensor_side, distance, p0):
         #as long as you havn't made it to the end
         error = vision() - target
         if line_side == "right":
-            Robot.chassis.drive(p0, -error * 4)
+            Robot.chassis.drive(p0, -error * kp)
         elif line_side == "left":
-            Robot.chassis.drive(p0, error * 4)
+            Robot.chassis.drive(p0, error * kp)
 
     Robot.brake()
     #STOP!
